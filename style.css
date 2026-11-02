@@ -1,0 +1,232 @@
+/* Global Styles & Variables */
+:root {
+    --bg-color: #0e0e11;
+    --card-bg: #18181c;
+    --accent-color: #ff6b00;
+    --accent-hover: #e05e00;
+    --text-main: #f1f1f5;
+    --text-muted: #a0a0ab;
+    --star-color: #ffb400;
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  /* Header & Navigation */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(24, 24, 28, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: 1px;
+  }
+  
+  .logo span {
+    color: var(--accent-color);
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+  
+  nav a {
+    font-weight: 500;
+    transition: var(--transition);
+  }
+  
+  nav a:hover, nav a.active {
+    color: var(--accent-color);
+  }
+  
+  .btn-login {
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+  
+  .btn-login:hover {
+    background-color: var(--accent-hover);
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+  }
+  
+  /* Main Container */
+  .container {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 1rem;
+  }
+  
+  .section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15%;
+    height: 70%;
+    width: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+  }
+  
+  /* Movie Grid */
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  /* Movie Card */
+  .movie-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .movie-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 107, 0, 0.5);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 107, 0, 0.2);
+  }
+  
+  .poster-wrapper {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+  }
+  
+  .poster-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+  }
+  
+  .movie-card:hover .poster-wrapper img {
+    scale: 1.05;
+  }
+  
+  .rating-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(14, 14, 17, 0.85);
+    backdrop-filter: blur(5px);
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    font-weight: bold;
+    color: var(--star-color);
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 180, 0, 0.3);
+  }
+  
+  .movie-info {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .movie-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .movie-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  
+  /* Interactive Rating Section */
+  .user-rating-box {
+    margin-top: auto;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .stars {
+    color: var(--star-color);
+    cursor: pointer;
+  }
+  
+  .btn-rate {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .btn-rate:hover {
+    background: var(--accent-color);
+    color: #fff;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    nav ul {
+      gap: 1rem;
+    }
+  }
