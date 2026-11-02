@@ -3,95 +3,227 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FilmFröcss</title>
+  <title>FilmFröccs - Értékelj. Fedezz fel. Nézz többet!</title>
+  <!-- KÜLSŐ CSS BEHÍVÁSA -->
   <link rel="stylesheet" href="style.css">
+  <!-- ICON FONT KIT -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
+  <!-- NAVIGÁCIÓ -->
   <header>
-    <div class="logo">CINE<span>PULSE</span></div>
-    <nav>
-      <ul>
-        <li><a href="#" class="active">Főoldal</a></li>
-        <li><a href="#">Filmek</a></li>
-        <li><a href="#">Toplista</a></li>
-        <li><a href="#">Kategóriák</a></li>
+    <div class="nav-container">
+      <a href="#" class="logo-link" onclick="switchTab('kezdolap')">
+        <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40 20 C20 20, 15 40, 15 65 C15 80, 25 90, 45 90 C65 90, 75 80, 75 65 C75 40, 70 20, 50 20 Z" fill="#ff7700"/>
+          <path d="M40 30 C30 30, 25 45, 25 65 C25 75, 30 82, 45 82 C60 82, 65 75, 65 65 C65 45, 60 30, 50 30 Z" fill="#18181b"/>
+          <rect x="42" y="8" width="8" height="14" rx="2" fill="#ff7700"/>
+          <path d="M60 12 L72 16" stroke="#ff7700" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <span>FilmFröccs</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><button class="nav-btn active" id="btn-kezdolap" onclick="switchTab('kezdolap')"><i class="fa-solid fa-house"></i> Kezdőlap</button></li>
+        <li><button class="nav-btn" id="btn-filmek" onclick="switchTab('filmek')"><i class="fa-solid fa-film"></i> Filmek</button></li>
+        <li><button class="nav-btn" id="btn-sorozatok" onclick="switchTab('sorozatok')"><i class="fa-solid fa-tv"></i> Sorozatok</button></li>
+        <li><button class="nav-btn" id="btn-achievementek" onclick="switchTab('achievementek')"><i class="fa-solid fa-trophy"></i> Achievementek</button></li>
+        <li><button class="nav-btn" id="btn-kozosseg" onclick="switchTab('kozosseg')"><i class="fa-solid fa-users"></i> Közösség</button></li>
       </ul>
-    </nav>
-    <a href="#" class="btn-login">Bejelentkezés</a>
+
+      <div class="nav-actions">
+        <button class="icon-btn" onclick="switchTab('filmek')"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="icon-btn" onclick="switchTab('profil')"><i class="fa-solid fa-circle-user"></i></button>
+      </div>
+    </div>
   </header>
 
-  <main class="container">
-    <h2 class="section-title">Legjobbra értékelt filmek</h2>
-
-    <div class="movie-grid">
-      
-      <!-- Card 1 -->
-      <div class="movie-card">
-        <div class="poster-wrapper">
-          <span class="rating-badge">★ 9.3</span>
-          <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80" alt="Film poszter">
+  <main>
+    <!-- 1. KEZDŐLAP TAB -->
+    <div id="kezdolap" class="tab-content active">
+      <section class="hero-section">
+        <h1 class="hero-title">FilmFröccs</h1>
+        <p class="hero-subtitle">Értékelj. Fedezz fel. Nézz többet!</p>
+        <div class="search-bar-wrapper">
+          <div class="search-input-group">
+            <i class="fa-solid fa-magnifying-glass" style="color: var(--text-muted)"></i>
+            <input type="text" placeholder="Keresés filmre, sorozatra, színészre..." onkeyup="if(event.key==='Enter') switchTab('filmek')">
+          </div>
+          <button class="search-submit-btn" onclick="switchTab('filmek')">Keresés</button>
         </div>
-        <div class="movie-info">
-          <h3 class="movie-title">Dűne: Második rész</h3>
-          <p class="movie-meta">2024 • Sci-Fi, Akció • 2ó 46p</p>
-          <div class="user-rating-box">
-            <span class="stars">★★★★★</span>
-            <button class="btn-rate">Értékelés</button>
+      </section>
+
+      <div class="home-top-grid">
+        <div class="card-box">
+          <div class="section-header">
+            <div class="section-title"><i class="fa-solid fa-fire" style="color: #ff7700;"></i> Népszerű filmek</div>
+            <a href="#" style="color: var(--primary-orange); text-decoration: none; font-size: 0.9rem;" onclick="switchTab('filmek')">További filmek &rarr;</a>
+          </div>
+          <div class="horizontal-movie-list">
+            <div class="movie-mini-card">
+              <div class="wireframe-poster"></div>
+              <div class="title">Interstellar</div>
+              <div class="meta"><span><i class="fa-solid fa-star" style="color: #fbbf24;"></i> 8.7</span> <span><i class="fa-solid fa-user"></i> 2.3M</span></div>
+            </div>
+            <div class="movie-mini-card">
+              <div class="wireframe-poster"></div>
+              <div class="title">The Dark Knight</div>
+              <div class="meta"><span><i class="fa-solid fa-star" style="color: #fbbf24;"></i> 9.0</span> <span><i class="fa-solid fa-user"></i> 2.9M</span></div>
+            </div>
+            <div class="movie-mini-card">
+              <div class="wireframe-poster"></div>
+              <div class="title">Inception</div>
+              <div class="meta"><span><i class="fa-solid fa-star" style="color: #fbbf24;"></i> 8.8</span> <span><i class="fa-solid fa-user"></i> 2.7M</span></div>
+            </div>
+            <div class="movie-mini-card">
+              <div class="wireframe-poster"></div>
+              <div class="title">Fight Club</div>
+              <div class="meta"><span><i class="fa-solid fa-star" style="color: #fbbf24;"></i> 8.8</span> <span><i class="fa-solid fa-user"></i> 2.8M</span></div>
+            </div>
+            <div class="movie-mini-card">
+              <div class="wireframe-poster"></div>
+              <div class="title">Pulp Fiction</div>
+              <div class="meta"><span><i class="fa-solid fa-star" style="color: #fbbf24;"></i> 8.9</span> <span><i class="fa-solid fa-user"></i> 2.9M</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-box">
+          <div class="section-header">
+            <div class="section-title"><i class="fa-solid fa-trophy" style="color: #ff7700;"></i> Top 10 film</div>
+          </div>
+          <ul class="top-list">
+            <li class="top-list-item"><span class="rank">1.</span><div class="bar"><div class="fill" style="width: 96%;"></div></div><span style="font-size: 0.85rem;"><i class="fa-solid fa-star" style="color: #fbbf24;"></i> 9.6</span></li>
+            <li class="top-list-item"><span class="rank">2.</span><div class="bar"><div class="fill" style="width: 95%;"></div></div><span style="font-size: 0.85rem;"><i class="fa-solid fa-star" style="color: #fbbf24;"></i> 9.5</span></li>
+            <li class="top-list-item"><span class="rank">3.</span><div class="bar"><div class="fill" style="width: 90%;"></div></div><span style="font-size: 0.85rem;"><i class="fa-solid fa-star" style="color: #fbbf24;"></i> 9.0</span></li>
+            <li class="top-list-item"><span class="rank">4.</span><div class="bar"><div class="fill" style="width: 90%;"></div></div><span style="font-size: 0.85rem;"><i class="fa-solid fa-star" style="color: #fbbf24;"></i> 9.0</span></li>
+            <li class="top-list-item"><span class="rank">5.</span><div class="bar"><div class="fill" style="width: 89%;"></div></div><span style="font-size: 0.85rem;"><i class="fa-solid fa-star" style="color: #fbbf24;"></i> 8.9</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="home-bottom-grid">
+        <div class="card-box featured-card">
+          <div class="featured-poster">
+            <div class="wireframe-poster" style="height: 100%;"></div>
+          </div>
+          <div class="featured-details">
+            <h2 class="featured-title">Interstellar</h2>
+            <div class="rating-badge">
+              <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <span style="font-weight: bold;">8.7 / 10</span>
+              <span style="color: var(--text-muted); font-size: 0.9rem;"><i class="fa-solid fa-user"></i> 2.3M</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">2014 &bull; Sci-Fi, Dráma, Kaland &bull; 2 óra 49 perc</p>
+            <div class="action-btns">
+              <button class="btn-primary"><i class="fa-solid fa-star"></i> Értékelem</button>
+              <button class="btn-secondary"><i class="fa-solid fa-bookmark"></i> Mentés</button>
+              <button class="btn-secondary"><i class="fa-solid fa-share-nodes"></i> Megosztás</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-box">
+          <div class="section-title" style="margin-bottom: 1rem;"><i class="fa-solid fa-trophy" style="color: #ff7700;"></i> Achievementek</div>
+          <div class="progress-circle-box">
+            <div style="font-size: 1.8rem; font-weight: bold; color: var(--primary-orange);">62%</div>
+            <div>
+              <div style="font-weight: bold; font-size: 1.1rem;">32 / 50</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">megszerzett achievement</div>
+            </div>
+          </div>
+          <p style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-muted);">Kiemelt jelvények</p>
+          <div class="badge-grid">
+            <div class="badge-hex"><i class="fa-solid fa-film"></i></div>
+            <div class="badge-hex"><i class="fa-solid fa-clapperboard"></i></div>
+            <div class="badge-hex"><i class="fa-solid fa-star"></i></div>
+          </div>
+        </div>
+
+        <div class="card-box">
+          <div class="section-title" style="margin-bottom: 1rem;"><i class="fa-solid fa-comments" style="color: #ff7700;"></i> Legutóbbi értékelések</div>
+          <div class="review-item">
+            <div class="avatar"><i class="fa-solid fa-user"></i></div>
+            <div>
+              <div style="font-weight: 600; font-size: 0.9rem;">MintaFelhasználó <span style="color: #fbbf24; float: right;"><i class="fa-solid fa-star"></i> 10/10</span></div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">"Fantasztikus film!"</div>
+            </div>
+          </div>
+          <div class="review-item">
+            <div class="avatar"><i class="fa-solid fa-user"></i></div>
+            <div>
+              <div style="font-weight: 600; font-size: 0.9rem;">FilmKedvelő <span style="color: #fbbf24; float: right;"><i class="fa-solid fa-star"></i> 9/10</span></div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">"Nagyon jó volt!"</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. PROFIL TAB -->
+    <div id="profil" class="tab-content">
+      <div class="card-box profile-header-card">
+        <div class="profile-avatar-large"><i class="fa-solid fa-user"></i></div>
+        <div>
+          <h2>MintaFelhasználó <span style="font-size: 0.9rem; background: var(--primary-orange); padding: 2px 8px; border-radius: 12px; vertical-align: middle;">LVL 14</span></h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Tag 2023 óta &bull; FilmFröccs Guruló Hordó Rutin</p>
+          <div class="profile-stats">
+            <div class="stat-item"><div class="num">142</div><div class="label">Megnézett film</div></div>
+            <div class="stat-item"><div class="num">38</div><div class="label">Sorozat</div></div>
+            <div class="stat-item"><div class="num">8.4</div><div class="label">Átlag értékelés</div></div>
+            <div class="stat-item"><div class="num">32</div><div class="label">Achievement</div></div>
           </div>
         </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="movie-card">
-        <div class="poster-wrapper">
-          <span class="rating-badge">★ 8.9</span>
-          <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80" alt="Film poszter">
-        </div>
-        <div class="movie-info">
-          <h3 class="movie-title">Oppenheimer</h3>
-          <p class="movie-meta">2023 • Életrajzi, Dráma • 3ó 00p</p>
-          <div class="user-rating-box">
-            <span class="stars">★★★★☆</span>
-            <button class="btn-rate">Értékelés</button>
-          </div>
+      <div class="card-box">
+        <h3><i class="fa-solid fa-list" style="color: var(--primary-orange);"></i> Saját Film Listám (MyAnimeList stílus)</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Cím</th>
+              <th>Értékelésed</th>
+              <th>Globális pont</th>
+              <th>Státusz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Interstellar</td><td><i class="fa-solid fa-star" style="color:#fbbf24"></i> 10 / 10</td><td>8.7</td><td><span style="color: #4ade80;">Megnézve</span></td></tr>
+            <tr><td>The Dark Knight</td><td><i class="fa-solid fa-star" style="color:#fbbf24"></i> 9 / 10</td><td>9.0</td><td><span style="color: #4ade80;">Megnézve</span></td></tr>
+            <tr><td>Dune: Part Two</td><td><i class="fa-solid fa-star" style="color:#fbbf24"></i> - / 10</td><td>8.6</td><td><span style="color: #60a5fa;">Tervezett</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 3. FILMEK TAB -->
+    <div id="filmek" class="tab-content">
+      <div class="card-box">
+        <h2><i class="fa-solid fa-film" style="color: var(--primary-orange);"></i> Film Kereső és Katalógus</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Keresgélj a teljes adatbázisban!</p>
+        <div class="horizontal-movie-list">
+          <div class="movie-mini-card"><div class="wireframe-poster"></div><div class="title">Interstellar</div></div>
+          <div class="movie-mini-card"><div class="wireframe-poster"></div><div class="title">The Dark Knight</div></div>
+          <div class="movie-mini-card"><div class="wireframe-poster"></div><div class="title">Inception</div></div>
+          <div class="movie-mini-card"><div class="wireframe-poster"></div><div class="title">Fight Club</div></div>
+          <div class="movie-mini-card"><div class="wireframe-poster"></div><div class="title">Pulp Fiction</div></div>
         </div>
       </div>
-
-      <!-- Card 3 -->
-      <div class="movie-card">
-        <div class="poster-wrapper">
-          <span class="rating-badge">★ 8.6</span>
-          <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="Film poszter">
-        </div>
-        <div class="movie-info">
-          <h3 class="movie-title">Interstellar</h3>
-          <p class="movie-meta">2014 • Sci-Fi, Kaland • 2ó 49p</p>
-          <div class="user-rating-box">
-            <span class="stars">★★★★★</span>
-            <button class="btn-rate">Értékelés</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="movie-card">
-        <div class="poster-wrapper">
-          <span class="rating-badge">★ 8.4</span>
-          <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80" alt="Film poszter">
-        </div>
-        <div class="movie-info">
-          <h3 class="movie-title">Cyberpunk City</h3>
-          <p class="movie-meta">2025 • Sci-Fi, Thriller • 1ó 58p</p>
-          <div class="user-rating-box">
-            <span class="stars">★★★★☆</span>
-            <button class="btn-rate">Értékelés</button>
-          </div>
-        </div>
-      </div>
-
     </div>
   </main>
-<script src="script.js"></script>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+      
+      const targetTab = document.getElementById(tabId);
+      if (targetTab) targetTab.classList.add('active');
+
+      const targetBtn = document.getElementById('btn-' + tabId);
+      if (targetBtn) targetBtn.classList.add('active');
+    }
+  </script>
 </body>
 </html>
